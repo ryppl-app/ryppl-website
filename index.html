@@ -1,110 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ryppl — Your AI wellness companion</title>
-  <meta name="description" content="Ryppl is an AI wellness companion — not a tracker, not a chatbot. Talk to it, and it helps you eat, move, and feel better, one small ripple at a time." />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="rYppl is an AI wellness companion — not a tracker, not a chatbot. A trusted daily companion that helps you eat, move, and feel better, one small ripple at a time.">
+<title>rYppl — Your AI wellness companion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #0B6E6E;
+    --teal-accent: #0D9488;
+    --green: #1A9E5A;
+    --orange: #E8622A;
+    --purple: #7C5CBF;
+    --ink: #16302F;
+    --ink-soft: #4A6362;
+    --bg: #FAFCFB;
+    --card: #FFFFFF;
+    --line: #E3ECEA;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Header — name only */
+  header {
+    padding: 28px 0;
+  }
+  .brand {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--teal);
+    letter-spacing: -0.02em;
+  }
+  .brand-y { color: var(--teal-accent); }
+
+  /* Hero / Vision */
+  .hero {
+    padding: 56px 0 72px;
+    text-align: center;
+  }
+  .tagline {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal-accent);
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(2rem, 5.5vw, 3.1rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    margin-bottom: 24px;
+  }
+  h1 .accent { color: var(--teal); }
+  .vision {
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .vision + .vision { margin-top: 16px; }
+
+  /* Focus areas */
+  .areas {
+    padding: 24px 0 72px;
+  }
+  .areas-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .area-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .area {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: 4px solid;
+    border-radius: 14px;
+    padding: 28px 24px;
+  }
+  .area.nutrition { border-top-color: var(--green); }
+  .area.holistic  { border-top-color: var(--orange); }
+  .area.mood      { border-top-color: var(--purple); }
+  .area .emoji { font-size: 1.6rem; display: block; margin-bottom: 12px; }
+  .area h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .area.nutrition h3 { color: var(--green); }
+  .area.holistic  h3 { color: var(--orange); }
+  .area.mood      h3 { color: var(--purple); }
+  .area p {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+
+  /* Coming soon */
+  .building {
+    background: var(--teal);
+    border-radius: 20px;
+    padding: 56px 32px;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 72px;
+  }
+  .building .status {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #9FDBD3;
+    margin-bottom: 16px;
+  }
+  .building h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  .building h2 .headline-y { color: #9FDBD3; }
+  .building p {
+    color: #D3EEEA;
+    max-width: 520px;
+    margin: 0 auto 26px;
+  }
+  .building a.contact-btn {
+    display: inline-block;
+    background: #fff;
+    color: var(--teal);
+    font-weight: 700;
+    text-decoration: none;
+    padding: 13px 28px;
+    border-radius: 999px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .building a.contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+  }
+  .building a.contact-btn:focus-visible {
+    outline: 3px solid #9FDBD3;
+    outline-offset: 3px;
+  }
+
+  /* Footer — copyright only */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 28px 0;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 680px) {
+    .area-grid { grid-template-columns: 1fr; }
+    .hero { padding: 40px 0 56px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .building a.contact-btn { transition: none; }
+  }
+</style>
 </head>
 <body>
-  <!-- Nav -->
-  <nav class="nav">
-    <div class="wrap nav-inner">
-      <a href="index.html" class="brand">Ryppl</a>
-      <div class="nav-links">
-        <a href="#areas">Focus areas</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-  </nav>
 
-  <!-- Hero -->
-  <header class="hero">
-    <div class="wrap center">
-      <span class="tagline-pill">Small ripples. Whole life.</span>
-      <h1 style="max-width:18ch;margin:0 auto">The wellness app that <span style="color:var(--teal)">talks with you</span>, not at you.</h1>
-      <p class="lead" style="margin:20px auto 28px;max-width:52ch">Ryppl is an AI companion — not a tracker, not a chatbot. Tell it about your day and it helps you eat, move, and feel better, one small daily improvement at a time.</p>
-      <div class="hero-cta" style="justify-content:center">
-        <a href="mailto:contact@ryppl.app?subject=Early%20access%20to%20Ryppl" class="btn lg">Get early access</a>
-      </div>
-      <p class="hero-note">Coming to iOS &amp; Android · Your data stays private on your device.</p>
-    </div>
-  </header>
+<header>
+  <div class="wrap">
+    <div class="brand">r<span class="brand-y">Y</span>ppl</div>
+  </div>
+</header>
 
-  <!-- What it is -->
-  <section class="section" style="padding-top:24px">
-    <div class="wrap center">
-      <span class="eyebrow">Companion, not tracker</span>
-      <h2 style="margin-top:12px">Most apps track. Ryppl transforms, encourages, and holds hope.</h2>
-      <p class="lead">It learns your journey and shows up every day with warmth and belief — part <strong>coach</strong>, part <strong>partner</strong>, part <strong>friend</strong>. Just talk to it, and it does the rest: it celebrates every step and never keeps score against you.</p>
-    </div>
-  </section>
-
-  <!-- Areas -->
-  <section class="section" id="areas" style="padding-top:0">
+<main>
+  <section class="hero">
     <div class="wrap">
-      <div class="center">
-        <span class="eyebrow">Three focus areas</span>
-        <h2 style="margin-top:12px">Your whole self, in three simple areas</h2>
-      </div>
-      <div class="areas" style="margin-top:44px">
-        <div class="area-card">
-          <div class="emoji">🍎</div>
-          <h3 style="color:var(--nutrition)">Nutrition Wellness</h3>
-          <p>Eat well through consistent, balanced meals — logged just by telling Ryppl what you ate.</p>
-        </div>
-        <div class="area-card">
-          <div class="emoji">💪</div>
-          <h3 style="color:var(--holistic)">Holistic Health</h3>
-          <p>Build gentle, sustainable movement that fits your body — knee-safe, low-impact, real.</p>
-        </div>
-        <div class="area-card">
-          <div class="emoji">💜</div>
-          <h3 style="color:var(--mood)">Mood</h3>
-          <p>Reduce daily stress and build emotional consistency with a companion that remembers.</p>
-        </div>
-      </div>
+      <div class="tagline">your ripple companion</div>
+      <h1>A trusted companion for a <span class="accent">healthier, happier life.</span></h1>
+      <p class="vision">Our vision is to be the most trusted wellness companion in the world — helping people achieve their goals and live with greater health, confidence, purpose, resilience, and hope, <b>one day at a time</b></p>
+      
+      <!--
+      <p class="vision">Our vision is to create a trusted AI companion that empowers people to live healthier, happier, and more fulfilling lives — through personalized guidance, encouragement, accountability, and hope.</p>
+      <p class="vision">rYppl isn't a tracker or a chatbot. It's a daily companion that understands your unique journey and believes meaningful change is possible, one small daily improvement at a time.</p>
+    -->
     </div>
   </section>
 
-  <!-- Privacy -->
-  <section class="section" style="padding-top:0">
-    <div class="wrap center">
-      <span class="eyebrow">Privacy first</span>
-      <h2 style="margin-top:12px">Your health data never leaves your phone as-is.</h2>
-      <p class="lead">Ryppl is on-device-first. Your conversations, meals, and health signals stay <strong>encrypted on your device</strong>. Only a minimal, anonymized snapshot is ever sent — never your name, never raw records.</p>
-    </div>
-  </section>
-
-  <!-- CTA banner -->
-  <section class="section" style="padding-top:0">
+  <section class="areas">
     <div class="wrap">
-      <div class="banner">
-        <h2>It starts with Y.</h2>
-        <p>Be among the first to meet Ryppl. Join the early-access list and we'll let you know the moment it's ready.</p>
-        <a href="mailto:contact@ryppl.app?subject=Early%20access%20to%20Ryppl" class="btn lg">Get early access</a>
+      <div class="areas-label">Three focus areas</div>
+      <div class="area-grid">
+        <div class="area nutrition">
+          <span class="emoji">🍎</span>
+          <h3>Nutrition Wellness</h3>
+          <p>Eat well through consistent, balanced meals</p>
+        </div>
+        <div class="area holistic">
+          <span class="emoji">💪</span>
+          <h3>Holistic Health</h3>
+          <p>Build gentle, sustainable movement that fits your body</p>
+        </div>
+        <div class="area mood">
+          <span class="emoji">💜</span>
+          <h3>Mood</h3>
+          <p>Improve emotional consistency with a companion that remembers.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer id="contact">
-    <div class="wrap">
-      <div class="cols">
-        <div style="max-width:320px">
-          <div class="brand" style="font-size:20px;color:#fff">Ryppl</div>
-          <p style="color:#9fc4c4;font-size:14px;margin-top:10px">Your daily wellness companion. Small ripples. Whole life.</p>
-        </div>
-        <div class="col">
-          <h5>Contact</h5>
-          <a href="mailto:contact@ryppl.app" style="color:#fff;font-size:16px;font-weight:600;padding-bottom:6px">contact@ryppl.app</a>
-          <span style="color:#9fc4c4;font-size:13px">Questions, early access, or partnerships — we'd love to hear from you.</span>
-        </div>
-        <div class="col"><h5>Legal</h5><a href="#">Privacy</a><a href="#">Terms</a></div>
-      </div>
-      <div class="fine"><span>© 2026 Ryppl. All rights reserved.</span><span>Not a medical device. General wellness support, not medical advice.</span></div>
-    </div>
-  </footer>
+  <div class="wrap">
+    <section class="building">
+      <div class="status">In build · Coming soon</div>
+      <h2>The <span class="headline-y">Y</span> is You.</h2>
+      <p>rYppl is built around you. <br> Any questions — we'd love to hear from you.</p>
+      <a class="contact-btn" href="mailto:contact@ryppl.app">contact@ryppl.app</a>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 rYppl. All rights reserved.</div>
+</footer>
+
 </body>
 </html>
